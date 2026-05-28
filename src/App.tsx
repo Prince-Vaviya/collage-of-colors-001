@@ -1,5 +1,11 @@
+import { useState } from "react";
 import { motion } from "motion/react";
 import { ArrowRight, Menu, MessageCircle } from "lucide-react";
+import cutoutsImage from "./assets/cutouts.png";
+import greetingImage from "./assets/greeting.png";
+import identityImage from "./assets/identity.png";
+import spiralImage from "./assets/spiral.png";
+import spiralTwoImage from "./assets/spiral-2.png";
 import { Button } from "./components/ui/button";
 import { cn } from "./lib/utils";
 
@@ -7,6 +13,7 @@ const heroCards = [
   {
     title: "Brand Kits",
     label: "Identity",
+    image: identityImage,
     colors: "from-studio-cyan via-sky-300 to-white",
     rotate: -12,
     y: 10,
@@ -14,6 +21,7 @@ const heroCards = [
   {
     title: "Wedding Cards",
     label: "Occasions",
+    image: greetingImage,
     colors: "from-studio-magenta via-rose-300 to-orange-100",
     rotate: -6,
     y: -12,
@@ -21,6 +29,7 @@ const heroCards = [
   {
     title: "Photo Prints",
     label: "Memories",
+    image: cutoutsImage,
     colors: "from-studio-yellow via-amber-200 to-white",
     rotate: 0,
     y: 4,
@@ -28,6 +37,7 @@ const heroCards = [
   {
     title: "Packaging",
     label: "Products",
+    image: spiralImage,
     colors: "from-studio-blue via-cyan-300 to-white",
     rotate: 7,
     y: -16,
@@ -35,6 +45,7 @@ const heroCards = [
   {
     title: "Banners",
     label: "Promotion",
+    image: spiralTwoImage,
     colors: "from-emerald-400 via-teal-200 to-white",
     rotate: 13,
     y: 8,
@@ -141,6 +152,8 @@ function BounceCards({
 }: {
   cards: typeof heroCards;
 }) {
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+
   return (
     <div
       id="gallery"
@@ -149,6 +162,8 @@ function BounceCards({
       {cards.map((card, index) => {
         const centerOffset = index - (cards.length - 1) / 2;
         const x = `calc(${centerOffset} * clamp(5.25rem, 12vw, 9.6rem))`;
+        const hoverShift =
+          hoveredIndex === null ? 0 : index < hoveredIndex ? -34 : index > hoveredIndex ? 34 : 0;
 
         return (
           <motion.div
@@ -159,18 +174,22 @@ function BounceCards({
               opacity: 1,
               x,
               y: card.y,
-              scale: 1,
+              scale: hoveredIndex === index ? 1.04 : 1,
               rotate: card.rotate,
+              translateX: hoverShift,
+              zIndex: hoveredIndex === index ? 20 : index,
             }}
             transition={{
-              delay: 0.5 + index * 0.08,
+              delay: hoveredIndex === null ? 0.1 + index * 0.01 : 0,
               type: "spring",
-              stiffness: 180,
-              damping: 14,
-              mass: 0.85,
+              stiffness: 500,
+              damping: 21,
+              mass: 0.45,
             }}
+            onHoverStart={() => setHoveredIndex(index)}
+            onHoverEnd={() => setHoveredIndex(null)}
           >
-            <PrintCard {...card} />
+            <PrintCard image={card.image} title={card.title} />
           </motion.div>
         );
       })}
@@ -190,7 +209,10 @@ function SplitText({
   return (
     <span className={cn("inline-block", className)} aria-label={text}>
       {text.split(" ").map((word, wordIndex) => (
-        <span key={`${word}-${wordIndex}`} className="mr-[0.22em] inline-block overflow-hidden">
+        <span
+          key={`${word}-${wordIndex}`}
+          className="mr-[0.22em] inline-block overflow-visible pb-[0.16em]"
+        >
           {Array.from(word).map((char, charIndex) => (
             <motion.span
               key={`${char}-${wordIndex}-${charIndex}`}
@@ -213,44 +235,30 @@ function SplitText({
   );
 }
 
-function PrintCard({
-  title,
-  label,
-  colors,
-  featured = false,
-}: {
-  title: string;
-  label: string;
-  colors: string;
-  featured?: boolean;
-}) {
+function PrintCard({ image, title }: { image: string; title: string }) {
+  const [glareKey, setGlareKey] = useState(0);
+
   return (
     <div
       data-print-card="true"
+      onPointerEnter={() => setGlareKey((key) => key + 1)}
       className={cn(
-        "group relative h-44 w-32 overflow-hidden rounded-[1.2rem] border border-white/80 bg-white p-2 shadow-[0_28px_80px_rgba(31,37,40,0.18)] sm:h-52 sm:w-36 lg:h-56 lg:w-40",
-        featured && "h-52 w-36 sm:h-60 sm:w-44 lg:h-64 lg:w-48",
+        "group relative h-44 w-32 cursor-pointer overflow-hidden rounded-[1.2rem] bg-white shadow-[0_28px_80px_rgba(31,37,40,0.18)] sm:h-52 sm:w-36 lg:h-48 lg:w-64",
       )}
     >
-      <div className={cn("absolute inset-0 bg-gradient-to-br opacity-85", colors)} />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_25%_10%,rgba(255,255,255,0.95),transparent_34%),radial-gradient(circle_at_78%_70%,rgba(255,255,255,0.55),transparent_30%)]" />
-      <div className="relative flex h-full flex-col justify-between rounded-[1rem] border border-white/65 bg-white/30 p-3 backdrop-blur-[2px] sm:rounded-[1.2rem] sm:p-3.5">
-        <div>
-          <p className="text-[10px] font-black uppercase tracking-[0.24em] text-studio-ink/58">
-            {label}
-          </p>
-          <h3 className="mt-2 max-w-32 text-lg font-black leading-none text-studio-ink sm:text-xl lg:text-2xl">
-            {title}
-          </h3>
-        </div>
-        <div className="space-y-3">
-          <div className="h-12 rounded-2xl bg-studio-ink/90 shadow-inner sm:h-16 lg:h-20" />
-          <div className="space-y-2">
-            <span className="block h-2.5 rounded-full bg-white/78" />
-            <span className="block h-2.5 w-2/3 rounded-full bg-white/55" />
-          </div>
-        </div>
-      </div>
+      <img
+        src={image}
+        alt={title}
+        className="h-full w-full object-cover"
+        draggable={false}
+      />
+      <motion.div
+        key={glareKey}
+        className="pointer-events-none absolute -inset-y-10 -left-1/2 w-1/2 rotate-12 bg-gradient-to-r from-transparent via-white/80 to-transparent mix-blend-screen"
+        initial={{ x: "-120%", opacity: 0 }}
+        animate={{ x: "420%", opacity: [0, 1, 0] }}
+        transition={{ duration: 4, ease: [0.16, 1, 0.3, 1] }}
+      />
     </div>
   );
 }
