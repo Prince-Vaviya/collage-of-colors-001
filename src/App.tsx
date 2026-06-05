@@ -179,13 +179,22 @@ function BounceCards({
               translateX: hoverShift,
               zIndex: hoveredIndex === index ? 20 : index,
             }}
-            transition={{
-              delay: hoveredIndex === null ? 0.1 + index * 0.01 : 0,
-              type: "spring",
-              stiffness: 500,
-              damping: 21,
-              mass: 0.45,
-            }}
+            transition={
+              hoveredIndex !== null
+                ? {
+                    type: "spring",
+                    stiffness: 500,
+                    damping: 21,
+                    mass: 0.45,
+                  }
+                : {
+                    delay: 0.55 + index * 0.1,
+                    type: "spring",
+                    stiffness: 120,
+                    damping: 18,
+                    mass: 0.8,
+                  }
+            }
             onHoverStart={() => setHoveredIndex(index)}
             onHoverEnd={() => setHoveredIndex(null)}
           >
