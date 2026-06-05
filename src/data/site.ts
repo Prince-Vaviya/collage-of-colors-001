@@ -19,7 +19,16 @@ import {
   UsersRound,
 } from "lucide-react";
 
-export const navLinks = ["Home", "Shop", "Prints", "Blog", "Pages", "Contact Us"];
+export const navLinks = [
+  "Home",
+  "Services",
+  "Industries",
+  "Work Gallery",
+  "About Us",
+  "Careers",
+  "Contact Us",
+  "Get Your Job Details",
+];
 
 export const categories = [
   {
