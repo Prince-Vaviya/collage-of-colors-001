@@ -9,7 +9,7 @@ import { heroCards } from "../data/heroCards";
 export function HomePage() {
   return (
     <section className="relative flex min-h-screen items-center justify-center px-5 pb-8 pt-28 sm:pt-30 lg:pb-10 lg:pt-28">
-      <HeroBackground />
+      <HeroBackground showPrintLabels />
       <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col items-center">
         <div className="text-center">
           <SplitText

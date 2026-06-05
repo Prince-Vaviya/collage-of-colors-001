@@ -12,6 +12,8 @@ type NavbarProps = {
 export function Navbar({ currentPage }: NavbarProps) {
   const [menuOpen, setMenuOpen] = useState(false);
   const primaryNavItems = navItems.filter((item) => item.slug !== "get-your-job-details");
+  const isActive = (slug: string) =>
+    currentPage === slug || (slug === "services" && currentPage.startsWith("services/"));
 
   useEffect(() => {
     setMenuOpen(false);
@@ -32,10 +34,10 @@ export function Navbar({ currentPage }: NavbarProps) {
               <a
                 key={item.slug}
                 href={`#/${item.slug}`}
-                aria-current={currentPage === item.slug ? "page" : undefined}
+                aria-current={isActive(item.slug) ? "page" : undefined}
                 className={cn(
                   "whitespace-nowrap rounded-full px-3 py-2 transition hover:bg-zinc-100 hover:text-studio-ink xl:px-4",
-                  currentPage === item.slug && "bg-studio-ink text-white hover:bg-studio-ink hover:text-white",
+                  isActive(item.slug) && "bg-studio-ink text-white hover:bg-studio-ink hover:text-white",
                 )}
               >
                 {item.label}
@@ -66,10 +68,10 @@ export function Navbar({ currentPage }: NavbarProps) {
               <a
                 key={item.slug}
                 href={`#/${item.slug}`}
-                aria-current={currentPage === item.slug ? "page" : undefined}
+                aria-current={isActive(item.slug) ? "page" : undefined}
                 className={cn(
                   "rounded-2xl px-4 py-3 transition hover:bg-zinc-100 hover:text-studio-ink",
-                  currentPage === item.slug && "bg-studio-ink text-white hover:bg-studio-ink hover:text-white",
+                  isActive(item.slug) && "bg-studio-ink text-white hover:bg-studio-ink hover:text-white",
                 )}
               >
                 {item.label}
