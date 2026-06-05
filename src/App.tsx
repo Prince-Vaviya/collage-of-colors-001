@@ -5,6 +5,7 @@ import { services } from "./data/services";
 import { ComingSoonPage } from "./pages/ComingSoonPage";
 import { GraphicDesigningPage } from "./pages/GraphicDesigningPage";
 import { HomePage } from "./pages/HomePage";
+import { IndustriesPage } from "./pages/IndustriesPage";
 import { ServiceDetailPage } from "./pages/ServiceDetailPage";
 import { ServicesPage } from "./pages/ServicesPage";
 
@@ -32,11 +33,15 @@ function App() {
       <Navbar currentPage={currentPage} />
       {currentPage === "home" && <HomePage />}
       {currentPage === "services" && <ServicesPage />}
+      {currentPage === "industries" && <IndustriesPage />}
       {currentPage === "services/graphic-designing" && <GraphicDesigningPage />}
       {currentPage.startsWith("services/") &&
         currentPage !== "services/graphic-designing" &&
         activeService && <ServiceDetailPage service={activeService} />}
-      {currentPage !== "home" && currentPage !== "services" && !currentPage.startsWith("services/") && (
+      {currentPage !== "home" &&
+        currentPage !== "services" &&
+        currentPage !== "industries" &&
+        !currentPage.startsWith("services/") && (
         <ComingSoonPage title={activeItem.label} />
       )}
     </main>
