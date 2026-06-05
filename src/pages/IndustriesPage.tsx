@@ -67,36 +67,73 @@ function IndustrySelector({
         const isSelected = selectedIndustry.id === industry.id;
 
         return (
-          <motion.button
+          <IndustryCard
             key={industry.id}
-            type="button"
-            onClick={() => onSelectIndustry(industry)}
-            className={cn(
-              "group min-h-40 rounded-[1.4rem] border border-white/80 bg-white/76 p-5 text-left shadow-[0_18px_60px_rgba(31,37,40,0.07)] backdrop-blur transition",
-              isSelected && "border-studio-ink bg-studio-ink text-white",
-            )}
-            initial={{ opacity: 0, y: 22 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: index * 0.035, duration: 0.45 }}
-            whileHover={{ y: -7, rotate: index % 2 === 0 ? -1 : 1 }}
-            whileTap={{ scale: 0.98 }}
-          >
-            <span className="text-4xl" aria-hidden="true">
-              {industry.icon}
-            </span>
-            <span className="mt-5 block text-2xl font-extrabold leading-none">
-              {industry.label}
-            </span>
-            <span
-              className={cn(
-                "mt-4 block h-1 w-10 rounded-full bg-studio-magenta transition group-hover:w-16",
-                isSelected && "bg-white",
-              )}
-            />
-          </motion.button>
+            industry={industry}
+            index={index}
+            isSelected={isSelected}
+            onSelect={() => onSelectIndustry(industry)}
+          />
         );
       })}
     </div>
+  );
+}
+
+function IndustryCard({
+  industry,
+  index,
+  isSelected,
+  onSelect,
+}: {
+  industry: Industry;
+  index: number;
+  isSelected: boolean;
+  onSelect: () => void;
+}) {
+  return (
+    <motion.button
+      type="button"
+      onClick={onSelect}
+      className={cn(
+        "group relative min-h-40 overflow-hidden rounded-[1.4rem] border border-white/80 bg-white/76 p-5 text-left shadow-[0_18px_60px_rgba(31,37,40,0.07)] backdrop-blur transition-[border-color,background-color,box-shadow] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
+        isSelected && "border-studio-ink bg-studio-ink text-white",
+      )}
+      initial={{ opacity: 0, y: 22 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: index * 0.035, duration: 0.45 }}
+      whileHover={{
+        y: -7,
+        rotate: index % 2 === 0 ? -1 : 1,
+        transition: { type: "spring", stiffness: 180, damping: 18, mass: 0.65 },
+      }}
+      whileTap={{ scale: 0.98 }}
+    >
+      <span
+        aria-hidden="true"
+        className={cn(
+          "pointer-events-none absolute -inset-y-12 -left-1/2 w-1/3 -translate-x-[120%] rotate-12 opacity-0 transition-[transform,opacity] duration-[1250ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-[520%] group-hover:opacity-100",
+          isSelected ? "mix-blend-screen" : "mix-blend-multiply",
+        )}
+        style={{
+          background: isSelected
+            ? "linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.58), transparent)"
+            : "linear-gradient(90deg, transparent, rgba(113, 113, 122, 0.2), transparent)",
+        }}
+      />
+      <span className="relative z-10 text-4xl" aria-hidden="true">
+        {industry.icon}
+      </span>
+      <span className="relative z-10 mt-5 block text-2xl font-extrabold leading-none">
+        {industry.label}
+      </span>
+      <span
+        className={cn(
+          "relative z-10 mt-4 block h-1 w-10 rounded-full bg-studio-magenta transition-[width,background-color] duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:w-16",
+          isSelected && "bg-white",
+        )}
+      />
+    </motion.button>
   );
 }
 
