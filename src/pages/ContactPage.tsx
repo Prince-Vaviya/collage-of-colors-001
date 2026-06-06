@@ -2,9 +2,9 @@ import { motion } from "motion/react";
 import type { ReactNode } from "react";
 import {
   ArrowRight,
+  Mail,
   Building2,
   Check,
-  Mail,
   MapPin,
   MessageCircle,
   Navigation,
@@ -21,7 +21,7 @@ const address =
   "Shop No 3, Krishna Govind Complex, Sector 24, Turbhe, Navi Mumbai, Maharashtra 400703";
 
 const phoneNumbers = ["+91 88792 39384", "+91 75065 56080"];
-const emails = ["email1@coc.com", "email2@coc.com"];
+const emails = ["prints@collageofcolours.com", "accounts@collageofcolours.com"];
 const whatsappHref =
   "https://wa.me/918879239384?text=Hi%20Collage%20of%20Colours%2C%20I%20would%20like%20to%20discuss%20a%20print%20or%20design%20requirement.";
 const mapsHref =
@@ -51,7 +51,7 @@ const contactCards = [
     text: emails.join(" / "),
     icon: Mail,
     color: "#E83E7C",
-    href: "mailto:email1@coc.com",
+    href: "mailto:prints@collageofcolours.com",
     action: "Send Email",
   },
 ];
@@ -282,14 +282,14 @@ function FastResponseCard() {
     >
       <div className="grid gap-8 lg:grid-cols-2 lg:items-center">
         <div>
-          <span className="grid size-13 place-items-center rounded-2xl bg-white text-studio-ink">
+          <span className="grid size-12 place-items-center rounded-2xl bg-white text-studio-ink sm:size-14">
             <Building2 className="size-6" />
           </span>
           <p className="mt-6 text-sm font-extrabold uppercase tracking-[0.18em] text-white/55">
             Faster response
           </p>
           <h3 className="mt-3 max-w-xl text-4xl font-extrabold leading-[0.95] sm:text-5xl">
-          Send job details for a quicker quote.
+            Send job details for a quicker quote.
           </h3>
         </div>
 
@@ -307,19 +307,27 @@ function FastResponseCard() {
 
           <div className="grid gap-3 text-base font-bold text-white/88 sm:grid-cols-2 xl:grid-cols-1">
             <a href="tel:+918879239384" className="inline-flex items-center gap-3">
-              <Phone className="size-4 text-emerald-300" />
+              <span className="grid size-6 shrink-0 place-items-center rounded-full bg-emerald-400/15 text-emerald-300">
+                <Phone className="size-4" />
+              </span>
               {phoneNumbers[0]}
             </a>
             <a href="tel:+917506556080" className="inline-flex items-center gap-3">
-              <Phone className="size-4 text-emerald-300" />
+              <span className="grid size-6 shrink-0 place-items-center rounded-full bg-emerald-400/15 text-emerald-300">
+                <Phone className="size-4" />
+              </span>
               {phoneNumbers[1]}
             </a>
-            <a href="mailto:email1@coc.com" className="inline-flex items-center gap-3">
-              <Mail className="size-4 text-emerald-300" />
+            <a href="mailto:prints@collageofcolours.com" className="inline-flex items-center gap-3">
+              <span className="grid size-6 shrink-0 place-items-center rounded-full bg-emerald-400/15 text-emerald-300">
+                <Mail className="size-4" />
+              </span>
               {emails[0]}
             </a>
-            <a href="mailto:email2@coc.com" className="inline-flex items-center gap-3">
-              <Mail className="size-4 text-emerald-300" />
+            <a href="mailto:accounts@collageofcolours.com" className="inline-flex items-center gap-3">
+              <span className="grid size-6 shrink-0 place-items-center rounded-full bg-emerald-400/15 text-emerald-300">
+                <Mail className="size-4" />
+              </span>
               {emails[1]}
             </a>
           </div>
