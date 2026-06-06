@@ -23,7 +23,6 @@ export const industries = [
       "Dealer brochures",
       "Product labels",
       "Trade show banners",
-      "Corporate stationery",
     ],
   },
   {
