@@ -20,7 +20,7 @@ export function Navbar({ currentPage }: NavbarProps) {
   }, [currentPage]);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 px-5 py-5">
+    <header className="fixed inset-x-0 top-0 z-50 px-6 py-5 sm:px-8 lg:px-10">
       <div className="mx-auto max-w-[92rem] rounded-[1.55rem] border border-white/75 bg-white/40 p-1 shadow-[0_18px_60px_rgba(31,37,40,0.08)] backdrop-blur-2xl lg:rounded-full">
         <div className="relative overflow-hidden rounded-[1.25rem] border border-white/85 bg-white px-4 py-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.95)] lg:rounded-full lg:px-5">
           <div className="pointer-events-none absolute inset-0 rounded-[inherit] ring-1 ring-studio-ink/5" />
