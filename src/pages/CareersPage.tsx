@@ -4,17 +4,12 @@ import {
   ArrowRight,
   BadgeCheck,
   BriefcaseBusiness,
-  Check,
-  Clock3,
   FileUp,
   Layers3,
   Palette,
   Sparkles,
   Users,
 } from "lucide-react";
-import cutoutsImage from "../assets/cutouts.png";
-import greetingImage from "../assets/greeting.png";
-import spiralImage from "../assets/spiral.png";
 import { HeroBackground } from "../components/home/HeroBackground";
 import { Button } from "../components/ui/button";
 import { Input } from "../components/ui/input";
@@ -65,13 +60,6 @@ const openRoles = [
   },
 ];
 
-const workValues = [
-  "Hands-on print and brand work",
-  "Fast-moving creative production environment",
-  "Exposure to design, signage, packaging and gifting",
-  "Real client briefs instead of theoretical projects",
-];
-
 const positionOptions = [
   "Graphic Designer",
   "Digital Printing Operator",
@@ -83,6 +71,9 @@ const positionOptions = [
   "Other",
 ];
 
+const careerWhatsappHref =
+  "https://wa.me/918879239384?text=Hi%20Collage%20of%20Colours%2C%20I%20want%20to%20apply%20for%20a%20career%20opportunity.";
+
 export function CareersPage() {
   return (
     <section className="relative overflow-hidden px-5 pb-20 pt-36 font-['Inter_Tight',ui-sans-serif,system-ui,sans-serif]">
@@ -90,7 +81,6 @@ export function CareersPage() {
       <div className="relative z-10 mx-auto w-full max-w-7xl">
         <CareerHero />
         <OpenRoles />
-        <CultureSection />
         <ApplicationSection />
       </div>
     </section>
@@ -138,13 +128,7 @@ function OpenRoles() {
           <p className="text-sm font-extrabold uppercase tracking-[0.18em] text-zinc-400">
             Positions
           </p>
-          <h2 className="mt-3 max-w-3xl text-4xl font-extrabold leading-none text-studio-ink sm:text-6xl">
-            Roles for makers, designers and coordinators.
-          </h2>
         </div>
-        <p className="max-w-xl text-lg font-semibold leading-7 text-zinc-600">
-          Inspired by the reference flow: choose the role, share your experience, and upload your CV.
-        </p>
       </div>
 
       <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -183,55 +167,6 @@ function OpenRoles() {
     </section>
   );
 }
-
-function CultureSection() {
-  return (
-    <section className="mt-16 overflow-hidden rounded-[1.8rem] border border-white/80 bg-white/80 shadow-[0_26px_90px_rgba(31,37,40,0.08)] backdrop-blur-xl">
-      <div className="grid gap-0 lg:grid-cols-[0.95fr_1.05fr]">
-        <div className="relative min-h-[24rem] overflow-hidden">
-          <img
-            src={spiralImage}
-            alt="Print production and packaging material"
-            className="h-full min-h-[24rem] w-full object-cover"
-            draggable={false}
-          />
-          <img
-            src={cutoutsImage}
-            alt="Printed marketing samples"
-            className="absolute left-6 top-6 h-36 w-44 -rotate-6 rounded-[1rem] object-cover shadow-[0_24px_70px_rgba(31,37,40,0.18)]"
-            draggable={false}
-          />
-          <img
-            src={greetingImage}
-            alt="Gifting and print samples"
-            className="absolute bottom-6 right-6 h-44 w-36 rotate-6 rounded-[1rem] object-cover shadow-[0_24px_70px_rgba(31,37,40,0.22)]"
-            draggable={false}
-          />
-        </div>
-        <div className="p-6 sm:p-8 lg:p-10">
-          <p className="inline-flex items-center gap-2 rounded-full bg-studio-ink px-4 py-2 text-sm font-extrabold text-white">
-            <Clock3 className="size-4" />
-            Work culture
-          </p>
-          <h2 className="mt-6 text-4xl font-extrabold leading-none text-studio-ink sm:text-6xl">
-            Creative work, real deadlines, tangible results.
-          </h2>
-          <div className="mt-8 grid gap-4">
-            {workValues.map((value) => (
-              <div key={value} className="flex gap-4">
-                <span className="mt-1 grid size-7 shrink-0 place-items-center rounded-full bg-emerald-500 text-white">
-                  <Check className="size-4" />
-                </span>
-                <p className="text-lg font-bold leading-7 text-zinc-700">{value}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
 function ApplicationSection() {
   return (
     <section
@@ -256,11 +191,7 @@ function ApplicationSection() {
           the team will get back with the next step.
         </p>
         <Button asChild variant="whatsapp" className="mt-7">
-          <a
-            href="https://wa.me/918879239384?text=Hi%20Collage%20of%20Colours%2C%20I%20want%20to%20apply%20for%20a%20career%20opportunity."
-            target="_blank"
-            rel="noreferrer"
-          >
+          <a href={careerWhatsappHref} target="_blank" rel="noreferrer">
             Apply on WhatsApp
             <ArrowRight className="size-4" />
           </a>
@@ -312,17 +243,14 @@ function ApplicationSection() {
                 ))}
               </select>
             </LabeledField>
-            <LabeledField label="Experience">
-              <Input name="experience" placeholder="e.g. 2 years" />
-            </LabeledField>
           </div>
         </div>
 
         <div className="mt-8">
           <h3 className="text-3xl font-extrabold text-studio-ink">Experience & Skills</h3>
           <div className="mt-5 grid gap-4">
-            <LabeledField label="Portfolio / Work Link">
-              <Input name="portfolio" placeholder="Behance, Drive, Instagram, website..." />
+            <LabeledField label="Previous Job Title">
+              <Input name="portfolio" placeholder="Enter Your Previous Job Title..." />
             </LabeledField>
             <LabeledField label="Tell us about your skills">
               <Textarea

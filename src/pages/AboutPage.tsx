@@ -7,6 +7,7 @@ import {
   Clock3,
   HeartHandshake,
   Layers3,
+  Linkedin,
   Sparkles,
   Target,
   Users,
@@ -76,6 +77,31 @@ const teams = [
   },
 ];
 
+const managementDetails = [
+  {
+    name: "Viren Jatrara",
+    role: "Management & Client Relations",
+    text: "Keeps client requirements, project priorities and delivery expectations clear from the first discussion.",
+    icon: HeartHandshake,
+    color: "#0A66C2",
+    href: "https://www.linkedin.com/in/viren-jatrara-7b4760a6/",
+  },
+  {
+    name: "Creative & Production Management",
+    role: "Design, print and material planning",
+    text: "Aligns artwork, print methods, materials and finishing choices so the final output feels intentional.",
+    icon: Layers3,
+    color: "#E83E7C",
+  },
+  {
+    name: "Finishing & Delivery Management",
+    role: "Quality checks and handover",
+    text: "Oversees finishing, packing, dispatch coordination and readiness checks before work reaches the client.",
+    icon: BadgeCheck,
+    color: "#10B981",
+  },
+];
+
 export function AboutPage() {
   return (
     <section className="relative overflow-hidden px-5 pb-20 pt-36 font-['Inter_Tight',ui-sans-serif,system-ui,sans-serif]">
@@ -87,6 +113,7 @@ export function AboutPage() {
         <VisionMissionSection />
         <ServicesSection />
         <TeamSection />
+        <ManagementSection />
         <FinalCta />
       </div>
     </section>
@@ -451,6 +478,84 @@ function TeamSection() {
             </div>
           </div>
         </div>
+      </div>
+    </section>
+  );
+}
+
+function ManagementSection() {
+  return (
+    <section className="mt-16">
+      <motion.div
+        className="grid gap-6 lg:grid-cols-[0.78fr_1.22fr] lg:items-end"
+        initial={{ opacity: 0, y: 22 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.58, ease: [0.16, 1, 0.3, 1] }}
+      >
+        <div>
+          <p className="inline-flex items-center gap-2 rounded-full border border-white/80 bg-white/80 px-4 py-2 text-sm font-extrabold text-studio-blue shadow-[0_18px_50px_rgba(31,37,40,0.08)] backdrop-blur">
+            <Users className="size-4" />
+            Management Team
+          </p>
+          <h2 className="mt-5 max-w-3xl text-4xl font-extrabold leading-none text-studio-ink sm:text-6xl">
+            The people keeping every job accountable.
+          </h2>
+        </div>
+        <p className="max-w-2xl text-lg font-semibold leading-8 text-zinc-600 lg:justify-self-end">
+          From client briefing to final delivery, management keeps design, production, finishing
+          and communication moving in one practical direction.
+        </p>
+      </motion.div>
+
+      <div className="mt-8 grid gap-5 lg:grid-cols-3">
+        {managementDetails.map((member, index) => {
+          const Icon = member.icon;
+          const content = (
+            <>
+              <span
+                className="grid size-13 place-items-center rounded-2xl text-white shadow-[0_18px_50px_rgba(31,37,40,0.14)]"
+                style={{ backgroundColor: member.color }}
+              >
+                <Icon className="size-6" />
+              </span>
+              <p className="mt-6 text-xs font-extrabold uppercase tracking-[0.16em] text-zinc-400">
+                {member.role}
+              </p>
+              <h3 className="mt-2 text-3xl font-extrabold leading-tight text-studio-ink">
+                {member.name}
+              </h3>
+              <p className="mt-4 text-base font-semibold leading-7 text-zinc-600">{member.text}</p>
+              {member.href && (
+                <span className="mt-6 inline-flex items-center gap-2 text-sm font-extrabold text-[#0A66C2]">
+                  Connect on LinkedIn
+                  <Linkedin className="size-4" />
+                </span>
+              )}
+            </>
+          );
+
+          const className =
+            "block group relative min-h-full overflow-hidden rounded-[1.5rem] border border-white/80 bg-white/80 p-6 shadow-[0_20px_70px_rgba(31,37,40,0.07)] backdrop-blur-xl transition duration-500 hover:-translate-y-1";
+
+          return (
+            <motion.div
+              key={member.name}
+              initial={{ opacity: 0, y: 26 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ delay: index * 0.08, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            >
+              {member.href ? (
+                <a href={member.href} target="_blank" rel="noreferrer" className={className}>
+                  {content}
+                </a>
+              ) : (
+                <article className={className}>{content}</article>
+              )}
+            </motion.div>
+          );
+        })}
       </div>
     </section>
   );

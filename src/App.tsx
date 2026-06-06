@@ -6,6 +6,7 @@ import { services } from "./data/services";
 import { AboutPage } from "./pages/AboutPage";
 import { CareersPage } from "./pages/CareersPage";
 import { ComingSoonPage } from "./pages/ComingSoonPage";
+import { ContactPage } from "./pages/ContactPage";
 import { GraphicDesigningPage } from "./pages/GraphicDesigningPage";
 import { HomePage } from "./pages/HomePage";
 import { IndustriesPage } from "./pages/IndustriesPage";
@@ -41,6 +42,7 @@ function App() {
       {currentPage === "work-gallery" && <WorkGalleryPage />}
       {currentPage === "about-us" && <AboutPage />}
       {currentPage === "careers" && <CareersPage />}
+      {currentPage === "contact-us" && <ContactPage />}
       {currentPage === "services/graphic-designing" && <GraphicDesigningPage />}
       {currentPage.startsWith("services/") &&
         currentPage !== "services/graphic-designing" &&
@@ -51,6 +53,7 @@ function App() {
         currentPage !== "work-gallery" &&
         currentPage !== "about-us" &&
         currentPage !== "careers" &&
+        currentPage !== "contact-us" &&
         !currentPage.startsWith("services/") && (
         <ComingSoonPage title={activeItem.label} />
       )}
