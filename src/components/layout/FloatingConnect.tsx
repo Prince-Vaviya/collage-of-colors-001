@@ -24,7 +24,7 @@ const connectLinks = [
 
 export function FloatingConnect() {
   return (
-    <div className="fixed bottom-5 right-5 z-40 flex flex-col gap-3">
+    <div className="fixed inset-x-0 bottom-3 z-40 flex justify-center gap-3 px-4 sm:inset-x-auto sm:bottom-5 sm:right-5 sm:flex-col sm:px-0">
       {connectLinks.map((link) => {
         const Icon = link.icon;
 
@@ -37,11 +37,11 @@ export function FloatingConnect() {
             aria-label={link.label}
             title={link.label}
             className={cn(
-              "grid size-12 place-items-center rounded-full shadow-[0_18px_50px_rgba(31,37,40,0.18)] transition duration-300 hover:-translate-y-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-studio-blue focus-visible:ring-offset-2",
+              "grid size-10 place-items-center rounded-full shadow-[0_18px_50px_rgba(31,37,40,0.18)] transition duration-300 hover:-translate-y-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-studio-blue focus-visible:ring-offset-2 sm:size-12",
               link.className,
             )}
           >
-            <Icon className="size-5" />
+            <Icon className="size-4 sm:size-5" />
           </a>
         );
       })}

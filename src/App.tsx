@@ -16,9 +16,13 @@ import { WorkGalleryPage } from "./pages/WorkGalleryPage";
 
 function App() {
   const [currentPage, setCurrentPage] = useState<PageSlug>(getPageFromHash);
+  const [routeHash, setRouteHash] = useState(window.location.hash);
 
   useEffect(() => {
-    const syncPage = () => setCurrentPage(getPageFromHash());
+    const syncPage = () => {
+      setCurrentPage(getPageFromHash());
+      setRouteHash(window.location.hash);
+    };
 
     window.addEventListener("hashchange", syncPage);
     syncPage();
@@ -27,8 +31,19 @@ function App() {
   }, []);
 
   useEffect(() => {
-    requestAnimationFrame(() => window.scrollTo(0, 0));
-  }, [currentPage]);
+    requestAnimationFrame(() => {
+      const [, query = ""] = routeHash.split("?");
+      const section = new URLSearchParams(query).get("section");
+      const target = section ? document.getElementById(section) : null;
+
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+        return;
+      }
+
+      window.scrollTo(0, 0);
+    });
+  }, [currentPage, routeHash]);
 
   const activeItem = navItems.find((item) => item.slug === currentPage) ?? navItems[0];
   const activeService = services.find((service) => service.slug === currentPage);

@@ -17,7 +17,7 @@ export function BounceCards({ cards }: BounceCardsProps) {
     >
       {cards.map((card, index) => {
         const centerOffset = index - (cards.length - 1) / 2;
-        const x = `calc(${centerOffset} * clamp(5.25rem, 12vw, 9.6rem))`;
+        const x = `calc(${centerOffset} * clamp(3rem, 12vw, 9.6rem))`;
         const hoverShift =
           hoveredIndex === null ? 0 : index < hoveredIndex ? -34 : index > hoveredIndex ? 34 : 0;
 

@@ -8,22 +8,22 @@ import { heroCards } from "../data/heroCards";
 
 export function HomePage() {
   return (
-    <section className="relative flex min-h-screen items-center justify-center px-5 pb-8 pt-28 sm:pt-30 lg:pb-10 lg:pt-28">
+    <section className="relative flex min-h-screen items-start justify-start px-5 pb-24 pt-32 sm:pt-30 lg:items-center lg:justify-center lg:pb-10 lg:pt-28">
       <HeroBackground showPrintLabels />
       <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col items-center">
         <div className="text-center">
           <SplitText
             text="Collage of Colours"
-            className="block text-balance font-display text-[3.25rem] font-black leading-[0.9] tracking-tight sm:text-6xl lg:text-[4.8rem] xl:text-[5.6rem]"
+            className="block text-balance font-display text-[2.9rem] font-black leading-[0.9] tracking-tight sm:text-6xl lg:text-[4.8rem] xl:text-[5.6rem]"
           />
           <SplitText
             text="Bringing Brands, Occasions & Emotions Together."
             delay={0.45}
-            className="mx-auto mt-4 block max-w-4xl text-balance text-2xl font-black leading-tight tracking-tight text-zinc-700 sm:text-4xl lg:text-[2.65rem]"
+            className="mx-auto mt-4 block max-w-4xl text-balance text-[1.65rem] font-black leading-tight tracking-tight text-zinc-700 sm:text-4xl lg:text-[2.65rem]"
           />
         </div>
 
-        <div className="relative mt-2 flex h-[14.5rem] w-full items-center justify-center overflow-visible sm:mt-3 sm:h-[16rem] lg:h-[17rem]">
+        <div className="relative mt-3 flex h-[12.75rem] w-full items-center justify-center overflow-visible sm:mt-3 sm:h-[16rem] lg:h-[17rem]">
           <BounceCards cards={heroCards} />
         </div>
 

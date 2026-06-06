@@ -87,18 +87,19 @@ const managementDetails = [
     href: "https://www.linkedin.com/in/viren-jatrara-7b4760a6/",
   },
   {
-    name: "Creative & Production Management",
+    name: "Pankaj Jatrara",
     role: "Design, print and material planning",
     text: "Aligns artwork, print methods, materials and finishing choices so the final output feels intentional.",
     icon: Layers3,
     color: "#E83E7C",
   },
   {
-    name: "Finishing & Delivery Management",
+    name: "Dipesh Jatrara",
     role: "Quality checks and handover",
     text: "Oversees finishing, packing, dispatch coordination and readiness checks before work reaches the client.",
     icon: BadgeCheck,
     color: "#10B981",
+    href: "https://www.linkedin.com/in/dipeshjatrara/",
   },
 ];
 
@@ -133,7 +134,7 @@ function AboutHero() {
           <Sparkles className="size-4" />
           About Collage of Colours
         </p>
-        <h1 className="mt-6 max-w-5xl text-5xl font-extrabold leading-[0.92] text-studio-ink sm:text-7xl lg:text-[5.4rem]">
+        <h1 className="mt-6 max-w-5xl text-4xl font-extrabold leading-[0.92] text-studio-ink sm:text-7xl lg:text-[5.4rem]">
           Your one-stop studio for print-ready brand moments.
         </h1>
       </div>

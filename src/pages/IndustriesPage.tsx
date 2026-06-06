@@ -27,7 +27,7 @@ export function IndustriesPage() {
               Choose your industry
             </p>
             <h1
-              className="mt-6 max-w-[74rem] text-5xl font-extrabold leading-[0.92] text-studio-ink sm:text-7xl lg:text-[5.6rem] xl:text-[6.2rem]"
+              className="mt-6 max-w-[74rem] text-4xl font-extrabold leading-[0.92] text-studio-ink sm:text-7xl lg:text-[5.6rem] xl:text-[6.2rem]"
               aria-label="Industry-ready design, print, and packaging."
             >
               <span aria-hidden="true" className="block sm:whitespace-nowrap">
@@ -62,7 +62,7 @@ function IndustrySelector({
   onSelectIndustry: (industry: Industry) => void;
 }) {
   return (
-    <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+    <div className="mt-10 grid grid-cols-2 gap-3 sm:mt-12 sm:gap-4 lg:grid-cols-5">
       {industries.map((industry, index) => {
         const isSelected = selectedIndustry.id === industry.id;
 
@@ -96,7 +96,7 @@ function IndustryCard({
       type="button"
       onClick={onSelect}
       className={cn(
-        "group relative min-h-40 overflow-hidden rounded-[1.4rem] border border-white/80 bg-white/76 p-5 text-left shadow-[0_18px_60px_rgba(31,37,40,0.07)] backdrop-blur transition-[border-color,background-color,box-shadow] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
+        "group relative min-h-28 overflow-hidden rounded-[1.2rem] border border-white/80 bg-white/76 p-4 text-left shadow-[0_18px_60px_rgba(31,37,40,0.07)] backdrop-blur transition-[border-color,background-color,box-shadow] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] sm:min-h-32 lg:min-h-40 lg:rounded-[1.4rem] lg:p-5",
         isSelected && "border-studio-ink bg-studio-ink text-white",
       )}
       initial={{ opacity: 0, y: 22 }}
@@ -121,15 +121,15 @@ function IndustryCard({
             : "linear-gradient(90deg, transparent, rgba(113, 113, 122, 0.2), transparent)",
         }}
       />
-      <span className="relative z-10 text-4xl" aria-hidden="true">
+      <span className="relative z-10 text-3xl lg:text-4xl" aria-hidden="true">
         {industry.icon}
       </span>
-      <span className="relative z-10 mt-5 block text-2xl font-extrabold leading-none">
+      <span className="relative z-10 mt-4 block text-xl font-extrabold leading-none lg:mt-5 lg:text-2xl">
         {industry.label}
       </span>
       <span
         className={cn(
-          "relative z-10 mt-4 block h-1 w-10 rounded-full bg-studio-magenta transition-[width,background-color] duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:w-16",
+          "relative z-10 mt-3 block h-1 w-9 rounded-full bg-studio-magenta transition-[width,background-color] duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:w-14 lg:mt-4 lg:w-10 lg:group-hover:w-16",
           isSelected && "bg-white",
         )}
       />
@@ -149,14 +149,14 @@ function IndustryDetail({ industry }: { industry: Industry }) {
       <div className="grid gap-8 p-6 sm:p-8 lg:grid-cols-[0.88fr_1.12fr] lg:p-10">
         <div>
           <p className="text-sm font-extrabold text-zinc-400">Selected Industry</p>
-          <h2 className="mt-3 text-4xl font-extrabold leading-none text-studio-ink sm:text-6xl">
+          <h2 className="mt-3 text-3xl font-extrabold leading-none text-studio-ink sm:text-6xl">
             {industry.title}
           </h2>
-          <p className="mt-5 text-2xl font-bold leading-9 text-zinc-600">
+          <p className="mt-5 text-xl font-bold leading-8 text-zinc-600 sm:text-2xl sm:leading-9">
             {industry.statement}
           </p>
           <Button asChild className="mt-8">
-            <a href="#/get-your-job-details">
+            <a href="#/contact-us?section=enquiry-form">
               Discuss Requirement
               <ArrowRight className="size-4" />
             </a>

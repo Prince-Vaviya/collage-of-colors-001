@@ -25,7 +25,7 @@ export function ServicesPage() {
               <Sparkles className="size-4" />
               Services that make brands look ready
             </p>
-            <h1 className="mt-6 max-w-4xl font-['Inter_Tight',ui-sans-serif,system-ui,sans-serif] text-5xl font-extrabold leading-[0.95] text-studio-ink sm:text-7xl lg:text-[4.9rem]">
+            <h1 className="mt-6 max-w-4xl font-['Inter_Tight',ui-sans-serif,system-ui,sans-serif] text-4xl font-extrabold leading-[0.95] text-studio-ink sm:text-7xl lg:text-[4.9rem]">
               From Idea To Finished Brand Asset.
             </h1>
             <p className="mt-6 max-w-2xl text-xl font-semibold leading-8 text-zinc-600">

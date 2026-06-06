@@ -98,7 +98,7 @@ function ContactHero() {
           <Sparkles className="size-4" />
           Contact Collage of Colours
         </p>
-        <h1 className="mt-6 max-w-5xl text-5xl font-extrabold leading-[0.92] text-studio-ink sm:text-7xl lg:text-[5.4rem]">
+        <h1 className="mt-6 max-w-5xl text-4xl font-extrabold leading-[0.92] text-studio-ink sm:text-7xl lg:text-[5.4rem]">
           Let’s discuss your next design, print or packaging job.
         </h1>
       </div>
@@ -170,7 +170,8 @@ function ContactDetails() {
     <section className="mt-16">
       <div className="grid gap-8 lg:grid-cols-[1.04fr_0.96fr] lg:items-start">
         <motion.form
-          className="rounded-[1.8rem] border border-white/80 bg-white/80 p-6 shadow-[0_26px_90px_rgba(31,37,40,0.08)] backdrop-blur-xl sm:p-8"
+          id="enquiry-form"
+          className="scroll-mt-36 rounded-[1.8rem] border border-white/80 bg-white/80 p-6 shadow-[0_26px_90px_rgba(31,37,40,0.08)] backdrop-blur-xl sm:p-8"
           initial={{ opacity: 0, x: -24 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: "-100px" }}

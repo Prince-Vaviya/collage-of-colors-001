@@ -100,7 +100,7 @@ function CareerHero() {
           <Sparkles className="size-4" />
           Careers at Collage of Colours
         </p>
-        <h1 className="mt-6 max-w-5xl text-5xl font-extrabold leading-[0.92] text-studio-ink sm:text-7xl lg:text-[5.4rem]">
+        <h1 className="mt-6 max-w-5xl text-4xl font-extrabold leading-[0.92] text-studio-ink sm:text-7xl lg:text-[5.4rem]">
           Join the team that turns ideas into finished brand assets.
         </h1>
       </div>

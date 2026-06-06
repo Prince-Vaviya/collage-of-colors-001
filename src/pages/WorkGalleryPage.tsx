@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { motion } from "motion/react";
-import { ArrowRight, Check, Sparkles } from "lucide-react";
+import { ArrowRight, Check, Play, Sparkles } from "lucide-react";
 import { HeroBackground } from "../components/home/HeroBackground";
 import { Button } from "../components/ui/button";
 import {
@@ -36,7 +36,7 @@ export function WorkGalleryPage() {
               <Sparkles className="size-4" />
               Work Gallery
             </p>
-            <h1 className="mt-6 max-w-5xl text-5xl font-extrabold leading-[0.92] text-studio-ink sm:text-7xl lg:text-[5.4rem]">
+            <h1 className="mt-6 max-w-5xl text-4xl font-extrabold leading-[0.92] text-studio-ink sm:text-7xl lg:text-[5.4rem]">
               Visual proof that the final output matters.
             </h1>
           </div>
@@ -112,7 +112,7 @@ function WorkShowcaseRow({ item, index }: { item: GalleryItem; index: number }) 
 
   return (
     <motion.article
-      className="group relative overflow-hidden rounded-[1.6rem] border border-white/80 bg-white/80 p-4 shadow-[0_26px_90px_rgba(31,37,40,0.08)] backdrop-blur-xl sm:p-5 lg:p-6"
+      className="group relative overflow-hidden rounded-[1.35rem] border border-white/80 bg-white/80 p-3 shadow-[0_26px_90px_rgba(31,37,40,0.08)] backdrop-blur-xl sm:rounded-[1.6rem] sm:p-5 lg:p-6"
       initial={{ opacity: 0, y: 34 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
@@ -136,7 +136,7 @@ function WorkShowcaseRow({ item, index }: { item: GalleryItem; index: number }) 
         </div>
         <div
           className={cn(
-            "flex min-h-full flex-col justify-between bg-[#f8f8f4]/80 p-6 sm:p-8 lg:p-10",
+            "flex min-h-full flex-col justify-between bg-[#f8f8f4]/80 p-5 sm:p-8 lg:p-10",
             isReversed && "lg:order-1",
           )}
         >
@@ -144,10 +144,10 @@ function WorkShowcaseRow({ item, index }: { item: GalleryItem; index: number }) 
             <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-zinc-400">
               {item.category}
             </p>
-            <h2 className="mt-3 max-w-xl text-4xl font-extrabold leading-[0.94] text-studio-ink sm:text-5xl">
+            <h2 className="mt-3 max-w-xl text-3xl font-extrabold leading-[0.94] text-studio-ink sm:text-5xl">
               {item.title}
             </h2>
-            <div className="mt-6 grid gap-4">
+            <div className="mt-5 grid gap-4 sm:mt-6">
               <StoryLine label="What customer wanted" text={item.wanted} />
               <div className="flex items-center gap-3 text-sm font-extrabold text-zinc-400">
                 <span className="h-px flex-1 bg-studio-ink/12" />
@@ -158,7 +158,7 @@ function WorkShowcaseRow({ item, index }: { item: GalleryItem; index: number }) 
             </div>
           </div>
 
-          <div className="mt-8 flex flex-wrap gap-2">
+          <div className="mt-6 flex flex-wrap gap-2 sm:mt-8">
             {item.tags.map((tag) => (
               <span
                 key={tag}
@@ -184,11 +184,11 @@ function GalleryMedia({ item }: { item: GalleryItem }) {
   }
 
   return (
-    <div className="relative h-full min-h-[22rem] overflow-hidden bg-white">
+    <div className="relative h-full min-h-[16rem] overflow-hidden bg-white sm:min-h-[22rem]">
       <img
         src={item.image}
         alt={item.title}
-        className="h-full min-h-[22rem] w-full object-cover transition duration-700 group-hover:scale-105"
+        className="h-full min-h-[16rem] w-full object-cover transition duration-700 group-hover:scale-105 sm:min-h-[22rem]"
         draggable={false}
       />
       <MediaShade accent={item.accent} />
@@ -200,11 +200,11 @@ function BeforeAfterMedia({ item }: { item: GalleryItem }) {
   const [sliderValue, setSliderValue] = useState(54);
 
   return (
-    <div className="relative h-full min-h-[22rem] overflow-hidden bg-white">
+    <div className="relative h-full min-h-[16rem] overflow-hidden bg-white sm:min-h-[22rem]">
       <img
         src={item.image}
         alt={`${item.title} after`}
-        className="h-full min-h-[22rem] w-full object-cover"
+        className="h-full min-h-[16rem] w-full object-cover sm:min-h-[22rem]"
         draggable={false}
       />
       <div
@@ -251,19 +251,45 @@ function YoutubeMedia({ item }: { item: GalleryItem }) {
   const src = embedUrl.includes("?")
     ? `${embedUrl}&rel=0&modestbranding=1`
     : `${embedUrl}?rel=0&modestbranding=1`;
+  const videoId = getYoutubeVideoId(embedUrl);
+  const watchUrl = videoId ? `https://www.youtube.com/watch?v=${videoId}` : "https://www.youtube.com";
+  const thumbnailUrl = videoId ? `https://img.youtube.com/vi/${videoId}/hqdefault.jpg` : item.image;
 
   return (
-    <div className="relative h-full min-h-[22rem] overflow-hidden bg-white">
+    <div className="relative h-full min-h-[16rem] overflow-hidden bg-white sm:min-h-[22rem]">
+      <a
+        href={watchUrl}
+        target="_blank"
+        rel="noreferrer"
+        className="group/video relative flex h-full min-h-[16rem] items-center justify-center overflow-hidden sm:hidden"
+        aria-label={`Watch ${item.title} on YouTube`}
+      >
+        <img
+          src={thumbnailUrl}
+          alt={`${item.title} video preview`}
+          className="absolute inset-0 h-full w-full object-cover"
+          draggable={false}
+        />
+        <span className="absolute inset-0 bg-studio-ink/42" />
+        <span className="relative grid size-16 place-items-center rounded-full bg-white text-studio-ink shadow-[0_18px_50px_rgba(31,37,40,0.22)] transition group-hover/video:scale-105">
+          <Play className="ml-1 size-7 fill-current" />
+        </span>
+      </a>
       <iframe
         title={item.title}
         src={src}
-        className="h-full min-h-[22rem] w-full"
+        className="hidden h-full min-h-[16rem] w-full sm:block sm:min-h-[22rem]"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         referrerPolicy="strict-origin-when-cross-origin"
         allowFullScreen
       />
     </div>
   );
+}
+
+function getYoutubeVideoId(url: string) {
+  const match = url.match(/(?:embed\/|v=)([A-Za-z0-9_-]{6,})/);
+  return match?.[1];
 }
 
 function MediaShade({ accent }: { accent: string }) {
@@ -296,7 +322,7 @@ function StoryLine({
         )}
         {label}
       </p>
-      <p className="mt-2 text-lg font-bold leading-7 text-zinc-700">{text}</p>
+      <p className="mt-2 text-base font-bold leading-7 text-zinc-700 sm:text-lg">{text}</p>
     </div>
   );
 }

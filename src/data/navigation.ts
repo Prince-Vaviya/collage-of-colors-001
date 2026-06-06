@@ -18,7 +18,7 @@ export type PageSlug =
   | (typeof serviceDetailSlugs)[number];
 
 export function getPageFromHash(): PageSlug {
-  const slug = window.location.hash.replace(/^#\/?/, "") || "home";
+  const slug = (window.location.hash.replace(/^#\/?/, "") || "home").split("?")[0];
   const isNavRoute = navSlugs.includes(slug);
   const isServiceRoute = serviceDetailSlugs.includes(slug as (typeof serviceDetailSlugs)[number]);
 

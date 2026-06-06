@@ -20,16 +20,16 @@ export function Navbar({ currentPage }: NavbarProps) {
   }, [currentPage]);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 px-6 py-5 sm:px-8 lg:px-10">
+    <header className="fixed inset-x-0 top-0 z-50 px-4 py-3 sm:px-8 sm:py-4 lg:px-10 lg:py-5">
       <div className="mx-auto max-w-[92rem] rounded-[1.55rem] border border-white/75 bg-white/40 p-1 shadow-[0_18px_60px_rgba(31,37,40,0.08)] backdrop-blur-2xl lg:rounded-full">
-        <div className="relative overflow-hidden rounded-[1.25rem] border border-white/85 bg-white px-4 py-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.95)] lg:rounded-full lg:px-5">
+        <div className="relative overflow-hidden rounded-[1.25rem] border border-white/85 bg-white px-4 py-2.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.95)] sm:py-3 lg:rounded-full lg:px-5">
           <div className="pointer-events-none absolute inset-0 rounded-[inherit] ring-1 ring-studio-ink/5" />
           <div className="pointer-events-none absolute inset-x-6 top-0 h-px bg-white" />
           <div className="pointer-events-none absolute inset-x-8 bottom-0 h-px bg-studio-ink/5" />
           <div className="relative flex items-center justify-between gap-4">
             <a href="#/home" className="flex shrink-0 items-center gap-3">
               <LogoMark />
-              <span className="text-sm font-black tracking-tight sm:text-base">
+              <span className="text-base font-black tracking-tight sm:text-base">
                 Collage of Colours
               </span>
             </a>
@@ -58,7 +58,7 @@ export function Navbar({ currentPage }: NavbarProps) {
               </Button>
             </div>
             <Button
-              className="lg:hidden"
+              className="size-11 rounded-full p-0 lg:hidden"
               variant="outline"
               size="sm"
               aria-label={menuOpen ? "Close menu" : "Open menu"}

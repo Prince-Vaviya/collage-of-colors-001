@@ -15,7 +15,7 @@ export function PrintCard({ image, title }: PrintCardProps) {
       data-print-card="true"
       onPointerEnter={() => setGlareKey((key) => key + 1)}
       className={cn(
-        "group relative h-44 w-32 cursor-pointer overflow-hidden rounded-[1.2rem] bg-white shadow-[0_28px_80px_rgba(31,37,40,0.18)] sm:h-52 sm:w-36 lg:h-48 lg:w-64",
+        "group relative h-40 w-28 cursor-pointer overflow-hidden rounded-[1.2rem] bg-white shadow-[0_28px_80px_rgba(31,37,40,0.18)] sm:h-52 sm:w-36 lg:h-48 lg:w-64",
       )}
     >
       <img

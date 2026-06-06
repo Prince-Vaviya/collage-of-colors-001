@@ -12,7 +12,7 @@ export function HeroBackground({ showPrintLabels = false }: HeroBackgroundProps)
       {showPrintLabels && (
         <>
           <motion.div
-            className="absolute left-[14%] top-[28%] rounded-full border border-studio-blue/25 bg-studio-blue/8 px-5 py-3 text-sm font-black text-studio-blue backdrop-blur"
+            className="absolute left-[14%] top-[28%] hidden rounded-full border border-studio-blue/25 bg-studio-blue/8 px-5 py-3 text-sm font-black text-studio-blue backdrop-blur sm:block"
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: [0, -10, 0] }}
             transition={{
@@ -23,7 +23,7 @@ export function HeroBackground({ showPrintLabels = false }: HeroBackgroundProps)
             CMYK ready
           </motion.div>
           <motion.div
-            className="absolute right-[12%] top-[35%] rounded-full border border-emerald-500/25 bg-emerald-500/8 px-5 py-3 text-sm font-black text-emerald-700 backdrop-blur"
+            className="absolute right-[12%] top-[35%] hidden rounded-full border border-emerald-500/25 bg-emerald-500/8 px-5 py-3 text-sm font-black text-emerald-700 backdrop-blur sm:block"
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: [0, 12, 0] }}
             transition={{

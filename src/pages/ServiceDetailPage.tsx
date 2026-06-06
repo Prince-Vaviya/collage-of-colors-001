@@ -68,7 +68,7 @@ function ServiceHero({
           <Sparkles className="size-4" />
           {content.badge}
         </p>
-        <h1 className="mt-6 max-w-3xl text-5xl font-extrabold leading-[0.94] text-studio-ink sm:text-7xl lg:text-[5rem]">
+        <h1 className="mt-6 max-w-3xl text-4xl font-extrabold leading-[0.94] text-studio-ink sm:text-7xl lg:text-[5rem]">
           {content.heroTitle}
         </h1>
         <p className="mt-6 max-w-2xl text-2xl font-bold leading-9 text-zinc-600">

@@ -21,7 +21,7 @@ export function ComingSoonPage({ title }: ComingSoonPageProps) {
           <Clock3 className="size-4 text-studio-cyan" />
           Coming Soon
         </div>
-        <h1 className="text-5xl font-black leading-[0.95] tracking-tight sm:text-7xl">
+        <h1 className="text-4xl font-black leading-[0.95] tracking-tight sm:text-7xl">
           {title}
         </h1>
         <p className="mx-auto mt-5 max-w-2xl text-balance text-lg font-semibold leading-8 text-zinc-600">

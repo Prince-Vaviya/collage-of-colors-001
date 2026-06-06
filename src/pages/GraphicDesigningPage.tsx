@@ -116,7 +116,7 @@ function GraphicHero() {
           <Sparkles className="size-4" />
           Design that makes people remember you
         </p>
-        <h1 className="mt-6 max-w-3xl text-5xl font-extrabold leading-[0.94] text-studio-ink sm:text-7xl lg:text-[5rem]">
+        <h1 className="mt-6 max-w-3xl text-4xl font-extrabold leading-[0.94] text-studio-ink sm:text-7xl lg:text-[5rem]">
           Graphic Designing Services
         </h1>
         <p className="mt-6 max-w-2xl text-2xl font-bold leading-9 text-zinc-600">
