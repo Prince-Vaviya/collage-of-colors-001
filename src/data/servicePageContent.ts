@@ -196,7 +196,7 @@ export const servicePageContent: Record<string, ServicePageContent> = {
       },
       {
         title: "Material Mismatch",
-        description: "Paper, coating, or finish choices do not suit the printed product.",
+        description: "Colour variation, Paper quality inconsistency and Quantity mismatch",
       },
       {
         title: "Production Delays",
@@ -213,8 +213,8 @@ export const servicePageContent: Record<string, ServicePageContent> = {
         description: "Consistent print runs for boxes, sleeves, tags, and product material.",
       },
       {
-        title: "Labels",
-        description: "Brand-consistent labels for products, logistics, and retail presentation.",
+        title: "High Output Material Matching",
+        description: "No colour variations, no quantity shortfalls, no paper quality inconsistencies.",
       },
       {
         title: "Corporate Material",
