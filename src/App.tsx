@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Analytics } from "@vercel/analytics/react";
 import { FloatingConnect } from "./components/layout/FloatingConnect";
 import { Navbar } from "./components/layout/Navbar";
 import { getPageFromHash, navItems, type PageSlug } from "./data/navigation";
@@ -49,31 +50,34 @@ function App() {
   const activeService = services.find((service) => service.slug === currentPage);
 
   return (
-    <main className="min-h-screen overflow-hidden bg-[#f8f8f4] text-studio-ink">
-      <Navbar currentPage={currentPage} />
-      {currentPage === "home" && <HomePage />}
-      {currentPage === "services" && <ServicesPage />}
-      {currentPage === "industries" && <IndustriesPage />}
-      {currentPage === "work-gallery" && <WorkGalleryPage />}
-      {currentPage === "about-us" && <AboutPage />}
-      {currentPage === "careers" && <CareersPage />}
-      {currentPage === "contact-us" && <ContactPage />}
-      {currentPage === "services/graphic-designing" && <GraphicDesigningPage />}
-      {currentPage.startsWith("services/") &&
-        currentPage !== "services/graphic-designing" &&
-        activeService && <ServiceDetailPage service={activeService} />}
-      {currentPage !== "home" &&
-        currentPage !== "services" &&
-        currentPage !== "industries" &&
-        currentPage !== "work-gallery" &&
-        currentPage !== "about-us" &&
-        currentPage !== "careers" &&
-        currentPage !== "contact-us" &&
-        !currentPage.startsWith("services/") && (
-        <ComingSoonPage title={activeItem.label} />
-      )}
-      <FloatingConnect />
-    </main>
+    <>
+      <main className="min-h-screen overflow-hidden bg-[#f8f8f4] text-studio-ink">
+        <Navbar currentPage={currentPage} />
+        {currentPage === "home" && <HomePage />}
+        {currentPage === "services" && <ServicesPage />}
+        {currentPage === "industries" && <IndustriesPage />}
+        {currentPage === "work-gallery" && <WorkGalleryPage />}
+        {currentPage === "about-us" && <AboutPage />}
+        {currentPage === "careers" && <CareersPage />}
+        {currentPage === "contact-us" && <ContactPage />}
+        {currentPage === "services/graphic-designing" && <GraphicDesigningPage />}
+        {currentPage.startsWith("services/") &&
+          currentPage !== "services/graphic-designing" &&
+          activeService && <ServiceDetailPage service={activeService} />}
+        {currentPage !== "home" &&
+          currentPage !== "services" &&
+          currentPage !== "industries" &&
+          currentPage !== "work-gallery" &&
+          currentPage !== "about-us" &&
+          currentPage !== "careers" &&
+          currentPage !== "contact-us" &&
+          !currentPage.startsWith("services/") && (
+          <ComingSoonPage title={activeItem.label} />
+        )}
+        <FloatingConnect />
+      </main>
+      <Analytics />
+    </>
   );
 }
 
